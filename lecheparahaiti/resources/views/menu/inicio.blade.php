@@ -23,7 +23,7 @@
                 <h3>Medicamentos</h3>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-lg btn-block btn-primary " href="#"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
+                <a class="btn btn-lg btn-block btn-primary " href='{{ route('medicamento.index') }}'><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
