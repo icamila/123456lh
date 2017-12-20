@@ -2,6 +2,26 @@
 @section('content')
 <div class="container">
   <div class="row">
+    @if(session()->has('message.level'))
+    <div class="alert alert-{{ session('message.level') }} alert-dismissable"> 
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </a>
+      {!! session('message.content') !!}
+    </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="text-center col-sm-6 col-md-3 top-buffer">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registro">
         <i class="fa fa-user-plus" aria-hidden="true"></i> Ingresar nuevo paciente

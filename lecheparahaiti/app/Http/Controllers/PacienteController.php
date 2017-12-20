@@ -35,7 +35,20 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'aPaterno' => 'required',
+            'aMaterno' => 'required',
+            'fechaNacimiento' => 'required|date',
+            'sexo_id' => 'required',
+        ]);
+        $data = $request->all();
+        if (paciente::create ($data)) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'El Paciente a sido registrado');
+        }
+        return redirect()->action('PacienteController@index');
+
     }
 
     /**
