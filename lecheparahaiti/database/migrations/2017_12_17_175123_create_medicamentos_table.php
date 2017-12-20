@@ -16,8 +16,7 @@ class CreateMedicamentosTable extends Migration
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('tipo')->nullable();
-            $table->text('Observacion')->nullable();
+            $table->text('observacion')->nullable();
             $table->timestamps();
         });
     }

@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/paciente', 'PacienteController');
+Route::resource('/medicamento', 'MedicamentoController');
+Route::resource('/enfermedad', 'enfermedadController');
+Route::resource('/medicamento', 'MedicamentoController');

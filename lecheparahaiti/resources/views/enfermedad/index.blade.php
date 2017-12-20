@@ -4,7 +4,7 @@
   <div class="row">
     <div class="text-center col-sm-6 col-md-3 top-buffer">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registro">
-        <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Medicamento
+        <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Enfermedad
       </button>
     </div>
     <div class="col-md-offset-4 col-sm-5 top-buffer">
@@ -28,10 +28,10 @@
         <th>Observacion</th>
         <th>Opciones</th>
       </tr>
-      @foreach($medicamentos as $medicamento)
+      @foreach($enfermedades as $enfermedad)
       <tr>
-        <td>{{$medicamento->nombre}}</td>
-        <td>{{$medicamento->observacion}}</td>
+        <td>{{$enfermedad->nombre}}</td>
+        <td>{{$enfermedad->observacion}}</td>
         <td>
           <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" title="VER"></i>
           <a href="#">Ver</a>
@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Registro de Medicamento</h4>
+        <h4 class="modal-title">Registro de Enfermedad</h4>
       </div>
       <!-- Modal Body -->
       <div class="modal-body">

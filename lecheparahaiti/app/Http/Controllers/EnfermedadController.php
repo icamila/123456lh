@@ -14,7 +14,7 @@ class EnfermedadController extends Controller
      */
     public function index()
     {
-        //
+        return view('enfermedad.index', ['enfermedades' => enfermedad::all()]);
     }
 
     /**
@@ -35,7 +35,7 @@ class EnfermedadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

@@ -14,7 +14,7 @@ class MedicamentoController extends Controller
      */
     public function index()
     {
-        //
+        return view('medicamentos.index', ['medicamentos' => medicamento::all()]);
     }
 
     /**
@@ -35,7 +35,7 @@ class MedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
