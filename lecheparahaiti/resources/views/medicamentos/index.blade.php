@@ -2,8 +2,9 @@
 @section('content')
 <div class="container">
   <div class="row">
+    @include('layouts/mensaje') 
     <div class="text-center col-sm-6 col-md-3 top-buffer">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registro">
+      <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#registro">
         <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Medicamento
       </button>
     </div>
@@ -25,60 +26,34 @@
     <table class="table">
       <tr class="info">
         <th>Nombre</th>
-        <th>Observacion</th>
-        <th>Opciones</th>
+        <th>Observación</th>
+        <th class="text-center">Opciones</th>
       </tr>
       @foreach($medicamentos as $medicamento)
       <tr>
         <td>{{$medicamento->nombre}}</td>
         <td>{{$medicamento->observacion}}</td>
-        <td>
-          <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" title="VER"></i>
-          <a href="#">Ver</a>
+        <td class="text-center">
+          
+          <form action="{{ route('medicamento.destroy' , $medicamento->id) }}" method="POST">
+            <a href="#" class="btn btn-info open-modal btn-sm" role="button" name="{{$medicamento->id}}">
+              <i class="fa fa-edit" aria-hidden="true"></i> Editar 
+            </a>
+              {{ csrf_field() }}
+              {{ method_field('DELETE') }}
+              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> </span> Eliminar</button>
+          </form>
         </td>
       </tr>
       @endforeach
-    </table
+    </table>
   </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div id="registro" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+@include('medicamentos/nuevo')
+@include('medicamentos/editar')
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Registro de Medicamento</h4>
-      </div>
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <form class="form-horizontal" role="form" action="{{route('medicamento.store')}}" method="post">
-          {{ csrf_field() }}
-          <div class="form-group">
-            <label  class="col-sm-2 control-label" for="nombre">Nombre</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="nombre" name="nombre" autofocus/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="observacion" >Observacion</label>
-            <div class="col-sm-8">
-                <textarea class="form-control" id="observacion" name="observacion"></textarea>
-              </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-12 text-center">
-              <button type="submit" class="btn btn-primary">Registrar</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-  </div>
-</div>
+<!-- para la ruta -->
+<input type="hidden" id="ruta" value="{{route('medicamento.index')}}"/>
 @endsection

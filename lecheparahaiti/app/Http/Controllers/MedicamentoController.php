@@ -35,7 +35,16 @@ class MedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'observacion' => 'required',
+        ]);
+        $data = $request->all();
+        if (medicamento::create ($data)) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'El Medicamento ha sido registrado');
+        }
+        return redirect()->action('MedicamentoController@index');
     }
 
     /**
@@ -57,7 +66,9 @@ class MedicamentoController extends Controller
      */
     public function edit(medicamento $medicamento)
     {
-        //
+        return response()->json(
+            $medicamento->toArray()
+        );
     }
 
     /**
@@ -69,7 +80,16 @@ class MedicamentoController extends Controller
      */
     public function update(Request $request, medicamento $medicamento)
     {
-        //
+        $medicamento->fill($request->all());
+        if ($medicamento->save()) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'El Medicamento ha sido Actualizado');
+        }
+        return redirect()->action('MedicamentoController@index');
+        /* para json gg
+        return response()->json([
+            'mensaje' => "listo"
+        ]);*/
     }
 
     /**
@@ -80,6 +100,10 @@ class MedicamentoController extends Controller
      */
     public function destroy(medicamento $medicamento)
     {
-        //
+        if ($medicamento->delete()) {
+            request()->session()->flash('message.level', 'danger');
+            request()->session()->flash('message.content', 'El Medicamento ha sido Eliminado');
+        }
+        return redirect()->action('MedicamentoController@index');
     }
 }

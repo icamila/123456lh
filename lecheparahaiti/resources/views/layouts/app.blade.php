@@ -29,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         <img src="{{ asset('img/LOGO-WEB-NUEVO.jpg') }}" style="max-width:250px; margin-top: -7px;">
                     </a>
                 </div>
@@ -77,5 +77,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/medicamento.js') }}"></script>
 </body>
 </html>

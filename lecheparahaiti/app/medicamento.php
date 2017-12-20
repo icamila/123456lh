@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class medicamento extends Model
 {
     protected $table = 'medicamentos';
+    protected $fillable = [
+        "nombre", "observacion", 
+    ];
 }

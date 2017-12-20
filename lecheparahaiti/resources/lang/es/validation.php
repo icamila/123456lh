@@ -99,8 +99,14 @@ return [
 		'attribute-name' => [
 			'rule-name'  => 'custom-message',
 		],
-		'email' => [
-	        'required' => 'We need to know your e-mail address!',
+		'aPaterno' => [
+	        'required' => 'Debe ingresar el Apellido Paterno',
+	    ],
+	    'aMaterno' => [
+	        'required' => 'Debe ingresar el Apellido Materno',
+	    ],
+	    'sexo_id' => [
+	        'required' => 'Debe seleccionar el Sexo',
 	    ],
 	],
 
