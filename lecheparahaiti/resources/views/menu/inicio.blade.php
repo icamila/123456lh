@@ -36,7 +36,7 @@
                 <h3>Enfermedades</h3>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-lg btn-block btn-primary" href="#">Ingresar</a>
+                <a class="btn btn-lg btn-block btn-primary" href='{{ route('enfermedad.index') }}'><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                 <h3>Informes</h3>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-lg btn-block btn-primary" href="#">Ingresar</a>
+                <a class="btn btn-lg btn-block btn-primary" href='#'><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -59,10 +59,10 @@
         <div class="panel panel-default panel-menu">
             <div class="panel-heading">
                 <i class="fa fa-edit text-danger"></i>
-                <h3>Registro</h3>
+                <h3>Registro Usuario</h3>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-lg btn-block btn-primary" href="#">Ingresar</a>
+                <a class="btn btn-lg btn-block btn-primary" href='#'><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -72,10 +72,10 @@
         <div class="panel panel-default panel-menu">
             <div class="panel-heading">
                 <i class="fa fa-users text-danger"></i>
-                <h3>Perfiles</h3>
+                <h3>Perfil</h3>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-lg btn-block btn-primary" href="#">Ingresar</a>
+                <a class="btn btn-lg btn-block btn-primary" href='#'><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
