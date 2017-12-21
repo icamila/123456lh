@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/usuario';
 
     /**
      * Create a new controller instance.
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('web');
     }
 
     /**
@@ -49,8 +51,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nombre' => 'required|string|max:255',
+            'aPaterno' => 'required|string|max:255',
+            'aMaterno' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'rut' => 'required|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'fechaNacimiento' => 'nullable|date',
         ]);
     }
 
@@ -71,5 +77,20 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if ($user) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'El Usuario ha sido registrado');
+        }
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 }

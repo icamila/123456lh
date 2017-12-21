@@ -44,12 +44,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Inicar</a></li>
+                            <li><a href="{{ route('login') }}">Iniciar</a></li>
                             <li><a href="{{ route('register') }}">Registrar</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    Bienvenido(a): {{ Auth::user()->nombre }} <span class="caret"></span>
+                                    Bienvenido(a): {{ Auth::user()->full_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

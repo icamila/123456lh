@@ -35,7 +35,7 @@
         <td>{{$medicamento->observacion}}</td>
         <td class="text-center">
           
-          <form action="{{ route('medicamento.destroy' , $medicamento->id) }}" method="POST">
+          <form action="{{ route('medicamento.destroy' , $medicamento->id) }}" method="POST" id="deleteGroup">
             <a href="#" class="btn btn-info open-modal btn-sm" role="button" name="{{$medicamento->id}}">
               <i class="fa fa-edit" aria-hidden="true"></i> Editar 
             </a>

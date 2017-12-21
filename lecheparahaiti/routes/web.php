@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/usuario/perfil', 'UsuarioController@editar')->name('usuario.perfil');
+Route::resource('/usuario', 'UsuarioController');
 Route::resource('/paciente', 'PacienteController');
 Route::resource('/medicamento', 'MedicamentoController');
 Route::resource('/enfermedad', 'enfermedadController');

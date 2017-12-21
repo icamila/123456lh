@@ -17,6 +17,27 @@ $(document).ready(function(){
             $('#editar').modal('show');
         }) 
     });
+
+    //Coonfirmar eliminacion
+    $('#deleteGroup').on('submit',function(e){
+        if(!confirm('Confirmar eliminación')){
+              e.preventDefault();
+        }
+        $( "#dialog-confirm" ).dialog({
+              resizable: false,
+              height: "auto",
+              width: 400,
+              modal: true,
+              buttons: {
+                "Delete all items": function() {
+                  $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
+    });
 });
 
 //Para el cieere automatico de notificacion
