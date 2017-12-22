@@ -22,5 +22,5 @@ Route::get('/usuario/perfil', 'UsuarioController@editar')->name('usuario.perfil'
 Route::resource('/usuario', 'UsuarioController');
 Route::resource('/paciente', 'PacienteController');
 Route::resource('/medicamento', 'MedicamentoController');
-Route::resource('/enfermedad', 'enfermedadController');
+Route::resource('/enfermedad', 'EnfermedadController');
 Route::resource('/medicamento', 'MedicamentoController');

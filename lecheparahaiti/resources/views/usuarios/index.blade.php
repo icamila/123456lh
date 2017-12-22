@@ -2,7 +2,11 @@
 @section('content')
 <div class="container">
   <div class="row">
-    @include('layouts/mensaje') 
+    <a href="{{route('home')}}">
+    <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+  </div>
+  <div class="row">
+    @include('layouts/mensaje')
     <div class="text-center col-sm-6 col-md-3 top-buffer">
       <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#registro">
         <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Usuario

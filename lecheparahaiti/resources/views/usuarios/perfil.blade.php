@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+  <div class="row">
+    <a href="{{route('home')}}">
+    <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+  </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

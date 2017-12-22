@@ -8,8 +8,8 @@
   <div class="row">
     @include('layouts/mensaje')
     <div class="text-center col-sm-6 col-md-3 top-buffer">
-      <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#registro">
-        <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Medicamento
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registro">
+        <i class="fa fa-plus-square" aria-hidden="true"></i> Registrar Enfermedad
       </button>
     </div>
     <div class="col-md-offset-4 col-sm-5 top-buffer">
@@ -30,17 +30,17 @@
     <table class="table">
       <tr class="info">
         <th>Nombre</th>
-        <th>Observación</th>
+        <th>Observacion</th>
         <th class="text-center">Opciones</th>
       </tr>
-      @foreach($medicamentos as $medicamento)
+      @foreach($enfermedades as $enfermedad)
       <tr>
-        <td>{{$medicamento->nombre}}</td>
-        <td>{{$medicamento->observacion}}</td>
+        <td>{{$enfermedad->nombre}}</td>
+        <td>{{$enfermedad->observacion}}</td>
         <td class="text-center">
 
-          <form action="{{ route('medicamento.destroy' , $medicamento->id) }}" method="POST" id="deleteGroup">
-            <a href="#" class="btn btn-info open-modal btn-sm" role="button" name="{{$medicamento->id}}">
+          <form action="{{ route('enfermedad.destroy' , $enfermedad->id) }}" method="POST" id="deleteGroup">
+            <a href="#" class="btn btn-info open-modal btn-sm" role="button" name="{{$enfermedad->id}}">
               <i class="fa fa-edit" aria-hidden="true"></i> Editar
             </a>
               {{ csrf_field() }}
@@ -55,9 +55,9 @@
   </div>
 </div>
 
-@include('medicamentos/nuevo')
-@include('medicamentos/editar')
+@include('enfermedades/nuevo')
+@include('enfermedades/editar')
 
 <!-- para la ruta -->
-<input type="hidden" id="ruta" value="{{route('medicamento.index')}}"/>
+<input type="hidden" id="ruta" value="{{route('enfermedad.index')}}"/>
 @endsection

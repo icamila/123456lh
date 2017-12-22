@@ -14,7 +14,7 @@ class EnfermedadController extends Controller
      */
     public function index()
     {
-        return view('enfermedad.index', ['enfermedades' => enfermedad::all()]);
+        return view('enfermedades.index', ['enfermedades' => enfermedad::all()]);
     }
 
     /**
@@ -35,7 +35,16 @@ class EnfermedadController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+      $this->validate($request, [
+          'nombre' => 'required|max:255',
+          'observacion' => 'required',
+      ]);
+      $data = $request->all();
+      if (enfermedad::create ($data)) {
+          $request->session()->flash('message.level', 'success');
+          $request->session()->flash('message.content', 'La enfermedad ha sido registrado');
+      }
+      return redirect()->action('EnfermedadController@index');
     }
 
     /**
@@ -57,7 +66,9 @@ class EnfermedadController extends Controller
      */
     public function edit(enfermedad $enfermedad)
     {
-        //
+      return response()->json(
+          $enfermedad->toArray()
+      );
     }
 
     /**
@@ -69,7 +80,12 @@ class EnfermedadController extends Controller
      */
     public function update(Request $request, enfermedad $enfermedad)
     {
-        //
+      $enfermedad->fill($request->all());
+      if ($enfermedad->save()) {
+          $request->session()->flash('message.level', 'success');
+          $request->session()->flash('message.content', 'La enfermedad ha sido Actualizado');
+      }
+      return redirect()->action('EnfermedadController@index');
     }
 
     /**
@@ -80,6 +96,10 @@ class EnfermedadController extends Controller
      */
     public function destroy(enfermedad $enfermedad)
     {
-        //
+      if ($enfermedad->delete()) {
+          request()->session()->flash('message.level', 'danger');
+          request()->session()->flash('message.content', 'La enfermedad ha sido Eliminado');
+      }
+      return redirect()->action('EnfermedadController@index');
     }
 }
